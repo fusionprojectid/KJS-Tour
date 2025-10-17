@@ -37,3 +37,59 @@ Tujuan utama dari proyek ini adalah untuk menarik wisatawan dengan menyajikan in
 ---
 
 ## Struktur Proyek
+
+```
+
+.
+├── css/
+│   ├── bootstrap.min.css
+│   ├── bootstrap-icons.css
+│   ├── templatemo-tiya-golf-club.css
+│   └── style.css
+├── js/
+│   ├── animated-headline.js
+│   ├── click-scroll.js
+│   ├── custom.js
+│   ├── jquery.min.js
+│   ├── jquery.sticky.js
+│   └── modernizr.js
+├── images/
+│   ├── FSS.JPG
+│   ├── hero-background\_.jpg
+│   ├── paket-ngleluri-budaya.jpg
+│   ├── paket-pusaka-jawi.jpg
+│   ├── paket-sinau-sedino.jpg
+│   ├── profil-\*.jpg
+│   └── ... (semua gambar lainnya)
+├── index.html
+├── event-listing.html
+├── paket-detail.html
+└── README.md
+
+```
+
+---
+
+## Cara Menjalankan Proyek
+
+Karena ini adalah website statis, tidak diperlukan instalasi atau server khusus. Cukup buka salah satu file `.html` (terutama `index.html`) langsung di browser pilihan Anda.
+
+---
+
+## Kustomisasi
+
+Website ini dirancang agar mudah dimodifikasi:
+
+-   **Mengubah Warna:** Skema warna utama (emas, cokelat, krem) dapat diubah dengan mudah di dalam file `css/style.css` pada bagian variabel `:root`.
+-   **Mengubah Konten:** Semua teks (deskripsi, harga, jadwal, dll.) dapat diubah langsung di dalam file HTML yang relevan.
+-   **Mengganti Gambar:** Untuk mengganti gambar, cukup letakkan file gambar baru di dalam folder `images/` dan pastikan nama filenya sesuai dengan yang dipanggil di dalam tag `<img>` pada file HTML.
+
+---
+
+## Kredit
+
+-   **Template Asli:** Desain dasar diadaptasi dari template "Tiya Golf Club" oleh [TemplateMo](https://templatemo.com/).
+-   **Pengembangan & Kustomisasi:** Angga Wijanarko
+-   **Konten & Foto:** Kampung Jawa Sukorejo.
+
+```
