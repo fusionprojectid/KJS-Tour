@@ -1,0 +1,263 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.hero-bg {
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../images/hero-background_.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Custom colors from the logo */
+.text-kjs-dark-brown { color: #2F1A0C; }
+.bg-kjs-dark-brown { background-color: #2F1A0C; }
+
+.text-kjs-brown { color: #5C3A1F; }
+.bg-kjs-brown { background-color: #5C3A1F; }
+
+.text-kjs-gold { color: #D4AF37; }
+.bg-kjs-gold { background-color: #D4AF37; }
+
+.text-kjs-light-brown { color: #8B4513; }
+.bg-kjs-light-brown { background-color: #8B4513; }
+
+
+/* Override template colors */
+:root {
+  --primary-color:                #D4AF37; /* Gold */
+  --secondary-color:              #5C3A1F; /* Brown */
+  --section-bg-color:             #F8F4ED; /* Light Cream */
+  --custom-btn-bg-color:          #D4AF37; /* Gold */
+  --custom-btn-bg-hover-color:    #8B4513; /* Light Brown */
+  --link-hover-color:             #D4AF37; /* Gold */
+}
+
+.offcanvas {
+    background-color: #5C3A1F; /* Brown */
+}
+
+.membership-form {
+    background-color: #5C3A1F; /* Brown */
+}
+
+.custom-form button[type="submit"]:hover,
+.custom-form button[type="submit"]:focus {
+  background: #8B4513; /* Light Brown */
+}
+
+.table-responsive thead tr {
+    background-color: #2F1A0C; /* Darkest Brown */
+}
+
+.table-responsive .bi-check-circle-fill {
+  color: #5C3A1F; /* Brown */
+}
+
+.site-footer svg path {
+    fill: #D4AF37; /* Gold */
+}
+
+.navbar-brand-text, .navbar-brand-text small {
+    color: white;
+}
+
+.sticky-wrapper.is-sticky .navbar {
+    background-color: #2F1A0C; /* Darkest Brown */
+}
+
+/* About Section Member Block Adjustments */
+.member-block-info {
+    padding: 10px 0;
+    text-align: center;
+}
+
+.member-block-info h4 {
+    font-size: 1rem; /* Smaller font size for the name */
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    line-height: 1.3;
+}
+
+.member-block-info p {
+    font-size: 0.8rem; /* Smaller font size for the title */
+    margin-bottom: 0;
+}
+
+
+/* New Package Card Styles */
+.package-card {
+    background-color: #FFFFFF;
+    border: 1px solid #F0D9B6;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: left; /* Align text to the left */
+}
+
+.package-card .package-title {
+    color: #2F1A0C;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.package-card .package-subtitle-italic {
+    color: #8B4513;
+    font-size: 1rem;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.package-card .package-price {
+    color: #2F1A0C;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.package-card .package-min {
+    color: #5C3A1F;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.package-card hr {
+    border-top: 1px solid #F0D9B6;
+}
+
+.package-card .package-subtitle {
+    color: #5C3A1F;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.package-card .package-list {
+    list-style: none;
+    padding-left: 0;
+    flex-grow: 1;
+}
+
+.package-card .package-list li {
+    color: #5C3A1F;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.package-card .package-list i {
+    color: #D4AF37;
+    margin-right: 10px;
+    margin-top: 5px;
+    font-size: 1rem; /* Adjust icon size if needed */
+}
+
+.package-card .btn {
+    width: 100%;
+    margin-top: auto;
+}
+
+
+/* Contact Info Styles */
+.contact-info-container {
+    background-color: #F8F4ED;
+    padding: 30px;
+    border-radius: 15px;
+    height: 100%;
+}
+
+.contact-person {
+    margin-bottom: 20px;
+}
+
+.contact-person h5 {
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.contact-person p {
+    margin-bottom: 0;
+    line-height: 1.5;
+    color: #5C3A1F;
+}
+
+.contact-person .contact-link {
+    color: #2F1A0C;
+    text-decoration: none;
+}
+.contact-person .contact-link:hover {
+    color: #D4AF37;
+}
+
+/* Aturan Tambahan untuk Footer */
+.site-footer,
+.site-footer p,
+.site-footer a {
+    color: #5C3A1F; /* Menggunakan warna coklat tua yang ada di tema */
+}
+
+.site-footer .navbar-brand-text {
+    color: #5C3A1F !important; /* Memastikan nama brand juga berubah warna */
+}
+
+.site-footer-title {
+    color: #3d2614; /* Warna coklat yang lebih gelap untuk judul */
+}
+
+.social-icon-item .social-icon-link {
+    background-color: #5C3A1F; /* Mengubah latar belakang ikon sosial */
+    color: #ffffff; /* Mengubah warna ikon menjadi putih */
+}
+
+/* Mengganti gradasi biru-putih pada hero section */
+/* GANTI KODE LAMA INI:
+.section-overlay {
+  background: linear-gradient(to top, #5C3A1F, #F8F4ED);
+}
+*/
+
+/* DENGAN KODE BARU INI: */
+.section-overlay {
+  background: linear-gradient(to top, rgba(92, 58, 31, 0.6), rgba(47, 26, 12, 0.4));
+}
+
+/* style.css */
+
+/* Gaya untuk Gambar Paket Wisata dengan Animasi Hover */
+.package-image-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px; /* Pastikan angkanya di sini */
+  margin-bottom: 1.5rem;
+}
+
+.package-image-wrap .custom-block-image {
+  transition: transform 0.5s ease;
+}
+
+.package-image-wrap:hover .custom-block-image {
+  transform: scale(1.05); /* Efek zoom saat hover */
+}
+
+.package-image-wrap .custom-block-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  background-color: var(--secondary-color); /* Warna Cokelat */
+  border-radius: 50%;
+  color: var(--white-color);
+  font-size: 2rem;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+}
+
+.package-image-wrap:hover .custom-block-icon {
+  opacity: 1; /* Ikon muncul saat hover */
+}
