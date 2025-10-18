@@ -1,9 +1,21 @@
+/* style.css */
+
 body {
     font-family: 'Poppins', sans-serif;
+    /* Hapus overflow, position, transition dari sini jika sudah dipindah ke #page-wrapper */
 }
 
+#page-wrapper {
+    position: relative; /* Agar overflow bekerja */
+    overflow-x: hidden; /* Mencegah scroll horizontal */
+    background-color: var(--bs-body-bg, #fff); /* Pastikan punya background, fallback ke putih */
+    transition: transform 0.35s ease-in-out;
+    width: 100%; /* Pastikan lebar penuh */
+}
+
+
 .hero-bg {
-    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../images/hero-background_.jpg');
+    background-image: url('../images/hero-background_.jpg');
     background-size: cover;
     background-position: center;
 }
@@ -21,7 +33,6 @@ body {
 .text-kjs-light-brown { color: #8B4513; }
 .bg-kjs-light-brown { background-color: #8B4513; }
 
-
 /* Override template colors */
 :root {
   --primary-color:                #D4AF37; /* Gold */
@@ -32,10 +43,22 @@ body {
   --link-hover-color:             #D4AF37; /* Gold */
 }
 
+/* Gradient Overlay for Hero Sections */
+.hero-section .section-overlay {
+  background: linear-gradient(to top, rgba(92, 58, 31, 0.6), rgba(47, 26, 12, 0.4));
+}
+
+/* Gradient Overlay for Inner Page Headers (event-listing, paket-detail) */
+.hero-section.hero-50 .section-overlay {
+  background: linear-gradient(to top, #F8F4ED, #5C3A1F); /* Gradasi Krem ke Cokelat Solid */
+}
+
+/* Offcanvas (jika masih digunakan, sesuaikan warnanya) */
 .offcanvas {
     background-color: #5C3A1F; /* Brown */
 }
 
+/* Form Styles (jika ada form lain) */
 .membership-form {
     background-color: #5C3A1F; /* Brown */
 }
@@ -45,6 +68,7 @@ body {
   background: #8B4513; /* Light Brown */
 }
 
+/* Table Styles (jika ada tabel) */
 .table-responsive thead tr {
     background-color: #2F1A0C; /* Darkest Brown */
 }
@@ -53,17 +77,19 @@ body {
   color: #5C3A1F; /* Brown */
 }
 
-.site-footer svg path {
-    fill: #D4AF37; /* Gold */
-}
-
+/* Navbar Styles */
 .navbar-brand-text, .navbar-brand-text small {
-    color: white;
+    color: white; /* Pastikan teks logo putih saat transparan */
 }
 
 .sticky-wrapper.is-sticky .navbar {
     background-color: #2F1A0C; /* Darkest Brown */
 }
+.sticky-wrapper.is-sticky .navbar-brand-text,
+.sticky-wrapper.is-sticky .navbar-brand-text small {
+    color: white; /* Pastikan teks logo tetap putih saat sticky */
+}
+
 
 /* About Section Member Block Adjustments */
 .member-block-info {
@@ -83,8 +109,7 @@ body {
     margin-bottom: 0;
 }
 
-
-/* New Package Card Styles */
+/* New Package Card Styles (index.html) */
 .package-card {
     background-color: #FFFFFF;
     border: 1px solid #F0D9B6;
@@ -112,12 +137,12 @@ body {
 
 .package-card .package-price {
     color: #2F1A0C;
-    font-size: 1.5rem;
+    font-size: 1.2rem; /* Ukuran harga di index */
     font-weight: 700;
     margin-bottom: 5px;
 }
 
-.package-card .package-min {
+.package-card .package-min { /* Tidak digunakan lagi, tapi jaga2 */
     color: #5C3A1F;
     font-size: 0.9rem;
     margin-bottom: 15px;
@@ -125,18 +150,26 @@ body {
 
 .package-card hr {
     border-top: 1px solid #F0D9B6;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
 }
 
-.package-card .package-subtitle {
+.package-card .package-description { /* Deskripsi ringkas di index */
+     color: #5C3A1F;
+     font-size: 0.95rem;
+     line-height: 1.6;
+}
+
+.package-card .package-subtitle { /* Judul list di index (jika ada lagi) */
     color: #5C3A1F;
     font-weight: 600;
     margin-bottom: 10px;
 }
 
-.package-card .package-list {
+.package-card .package-list { /* List di index (jika ada lagi) */
     list-style: none;
     padding-left: 0;
-    flex-grow: 1;
+    flex-grow: 1; /* Agar deskripsi bisa pakai flex-grow juga */
 }
 
 .package-card .package-list li {
@@ -150,14 +183,51 @@ body {
     color: #D4AF37;
     margin-right: 10px;
     margin-top: 5px;
-    font-size: 1rem; /* Adjust icon size if needed */
+    font-size: 1rem;
 }
 
 .package-card .btn {
     width: 100%;
-    margin-top: auto;
+    margin-top: auto; /* Pastikan tombol selalu di bawah */
 }
 
+/* Package Image Hover Styles (index.html) */
+.package-image-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px; /* Radius sudut gambar paket */
+  margin-bottom: 1.5rem;
+}
+
+.package-image-wrap .custom-block-image {
+  transition: transform 0.5s ease;
+}
+
+.package-image-wrap:hover .custom-block-image {
+  transform: scale(1.05);
+}
+
+.package-image-wrap .custom-block-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  background-color: var(--secondary-color);
+  border-radius: 50%;
+  color: var(--white-color);
+  font-size: 2rem;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+}
+
+.package-image-wrap:hover .custom-block-icon {
+  opacity: 1;
+}
 
 /* Contact Info Styles */
 .contact-info-container {
@@ -174,6 +244,7 @@ body {
 .contact-person h5 {
     font-weight: 700;
     margin-bottom: 5px;
+    color: var(--secondary-color); /* Sesuaikan warna */
 }
 
 .contact-person p {
@@ -190,74 +261,538 @@ body {
     color: #D4AF37;
 }
 
-/* Aturan Tambahan untuk Footer */
-.site-footer,
+.contact-info-body {
+    text-align: left; /* PENTING: Pastikan rata kiri untuk desktop */
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.contact-info-body strong {
+    color: var(--white-color);
+    font-size: 1.2rem; /* Font size desktop */
+    display: block;
+    margin-bottom: 10px;
+}
+
+.contact-info-body p {
+    margin-bottom: 5px;
+}
+
+.contact-info-body .contact-link {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    transition: color 0.3s;
+    font-size: 1rem; /* Font size link desktop */
+    word-break: normal; /* Pastikan tidak break di desktop */
+    display: inline; /* Default display */
+    line-height: normal; /* Default line height */
+}
+.contact-info-body .contact-link:hover {
+    color: var(--primary-color);
+}
+
+.contact-info-footer {
+    text-align: center;
+}
+
+.contact-info-footer a {
+    display: inline-block;
+    background-color: var(--custom-btn-bg-hover-color);
+    color: var(--white-color);
+    padding: 10px 25px; /* Padding tombol desktop */
+    border-radius: var(--border-radius-small);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem; /* Font size tombol desktop */
+    transition: background-color 0.3s;
+}
+
+.contact-info-footer a:hover {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+/* Footer Styles */
+.site-footer {
+    background-color: #ffffff; /* Pastikan background putih */
+    color: #5C3A1F;
+    padding-top: 50px; /* Jarak atas sebelum konten footer */
+}
+
 .site-footer p,
 .site-footer a {
-    color: #5C3A1F; /* Menggunakan warna coklat tua yang ada di tema */
+    color: #5C3A1F;
 }
 
 .site-footer .navbar-brand-text {
-    color: #5C3A1F !important; /* Memastikan nama brand juga berubah warna */
+    color: #5C3A1F !important;
 }
 
 .site-footer-title {
-    color: #3d2614; /* Warna coklat yang lebih gelap untuk judul */
+    color: #2F1A0C; /* Warna coklat paling gelap untuk judul */
+    font-weight: 600;
 }
 
-.social-icon-item .social-icon-link {
-    background-color: #5C3A1F; /* Mengubah latar belakang ikon sosial */
-    color: #ffffff; /* Mengubah warna ikon menjadi putih */
+.social-icon {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+.social-icon li {
+    display: inline-block;
+    margin: 0 5px; /* Jarak antar ikon */
 }
 
-/* Mengganti gradasi biru-putih pada hero section */
-/* GANTI KODE LAMA INI:
-.section-overlay {
-  background: linear-gradient(to top, #5C3A1F, #F8F4ED);
-}
-*/
-
-/* DENGAN KODE BARU INI: */
-.section-overlay {
-  background: linear-gradient(to top, rgba(92, 58, 31, 0.6), rgba(47, 26, 12, 0.4));
-}
-
-/* style.css */
-
-/* Gaya untuk Gambar Paket Wisata dengan Animasi Hover */
-.package-image-wrap {
-  position: relative;
-  overflow: hidden;
-  border-radius: 15px; /* Pastikan angkanya di sini */
-  margin-bottom: 1.5rem;
+.social-icon-link {
+    border-radius: var(--border-radius-large);
+    color: var(--white-color);
+    font-size: var(--p-font-size);
+    display: block;
+    margin-right: 0; /* Hapus margin kanan default */
+    text-decoration: none;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    transition: background-color .3s;
+    background-color: #5C3A1F;
 }
 
-.package-image-wrap .custom-block-image {
-  transition: transform 0.5s ease;
+.social-icon-link:hover {
+    background-color: var(--primary-color); /* Gold saat hover */
+    color: var(--white-color);
 }
 
-.package-image-wrap:hover .custom-block-image {
-  transform: scale(1.05); /* Efek zoom saat hover */
+.copyright-text {
+    font-size: var(--copyright-font-size);
 }
 
-.package-image-wrap .custom-block-icon {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  background-color: var(--secondary-color); /* Warna Cokelat */
-  border-radius: 50%;
-  color: var(--white-color);
-  font-size: 2rem;
-  width: 50px;
-  height: 50px;
-  line-height: 50px;
-  text-align: center;
+.site-footer svg path {
+    fill: #D4AF37; /* Gold */
 }
 
-.package-image-wrap:hover .custom-block-icon {
-  opacity: 1; /* Ikon muncul saat hover */
+/* --- Mobile Responsiveness Adjustments (Selain Menu) --- */
+@media (max-width: 767.98px) {
+
+    /* Ukuran Font Judul */
+    .hero-section h1,
+    .hero-section .cd-headline {
+        font-size: 2.2rem;
+        margin-bottom: 1rem !important;
+    }
+
+    .hero-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .hero-section h4,
+    .hero-section h6 {
+         font-size: 1rem;
+    }
+
+    h2 { /* Target judul section umum */
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem !important;
+    }
+
+    .events-title { /* Judul acara/paket */
+        font-size: 1.1rem;
+    }
+
+    /* Ukuran Logo Navbar */
+    .navbar-brand img {
+        max-height: 40px;
+    }
+
+    /* Tombol di Hero Section */
+    .hero-section .custom-btn-group .btn,
+    .hero-section .custom-btn-group .link {
+        display: block;
+        width: 80%;
+        margin: 0 auto 0.75rem auto;
+    }
+    .hero-section .custom-btn-group .link {
+         margin-bottom: 0;
+    }
+     .hero-section .custom-btn-group .me-3 {
+        margin-right: auto !important;
+    }
+
+    /* Spacing Umum */
+    .section-padding {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    .package-card,
+    .contact-info-container {
+        padding: 20px;
+    }
+
+    .custom-block-info {
+        padding-top: 1rem;
+    }
+
+    .about-section .col-lg-5 {
+        margin-bottom: 2rem !important;
+    }
+
+    /* Footer Adjustments */
+     .site-footer .text-lg-start,
+     .site-footer .text-lg-end {
+        text-align: center !important;
+    }
+     .site-footer .justify-content-lg-end {
+        justify-content: center !important;
+    }
+
+    /* Kotak Info Kontak Mobile (jika diperlukan override tambahan) */
+    .contact-info-body {
+        text-align: center;
+    }
+    .contact-info-body .contact-link {
+        word-break: break-all;
+        font-size: 0.9rem;
+        line-height: 1.4;
+        display: inline-block;
+    }
+    .contact-info-footer a {
+        padding: 8px 20px;
+        font-size: 0.9rem;
+    }
+
+} /* Akhir dari Media Query 767px */
+
+/* --- Revisi CSS Kontak Overlay --- */
+
+/* 1. Pastikan wrapper kolom kanan relatif */
+.contact-section .contact-info {
+    position: relative; /* Induk untuk elemen absolut */
+    padding-top: 2rem; /* Beri ruang di atas jika diperlukan */
+    padding-bottom: 2rem; /* Beri ruang di bawah jika diperlukan */
+    overflow: hidden; /* Prevent map overflow if needed */
+    border-radius: var(--border-radius-medium); /* Optional: match item radius */
 }
+
+/* 2. Atur posisi kotak kontak */
+.contact-section .contact-info .contact-info-item {
+    position: relative; /* Kembalikan ke alur normal DULU */
+    z-index: 2; /* Pastikan di atas gambar */
+    /* Hapus/timpa gaya absolut dari template */
+    top: auto;
+    left: auto;
+    transform: none;
+    max-width: 400px; /* Sesuaikan lebar maksimum */
+    margin: 0 auto; /* Pusatkan horizontal di dalam kolomnya */
+    /* Background dan padding dari template asli mungkin masih relevan */
+    background-color: var(--secondary-color);
+    border-radius: var(--border-radius-medium);
+    padding: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* 3. Atur posisi dan tampilan gambar peta sebagai background */
+.contact-section .contact-info > img.img-fluid {
+    position: absolute; /* Posisikan absolut relatif terhadap .contact-info */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Agar gambar mengisi area wrapper */
+    z-index: 1; /* Taruh di belakang contact-info-item */
+    opacity: 0.15; /* Atur transparansi sesuai keinginan */
+    margin-top: 0; /* Hapus margin atas negatif */
+    border-radius: var(--border-radius-medium); /* Samakan radius sudut jika perlu */
+}
+
+/* 4. Penyesuaian Mobile Kontak (jika perlu) */
+@media (max-width: 991.98px) {
+    .contact-section .col-lg-6.offset-lg-1 {
+        margin-top: 2rem; /* Jarak atas untuk kolom kanan di mobile */
+    }
+     /* Make map taller/adjust aspect ratio on mobile if needed */
+    .contact-section .contact-info {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+         min-height: 250px; /* Example: Ensure enough height for map */
+    }
+     .contact-section .contact-info .contact-info-item {
+        max-width: 90%;
+        padding: 15px; /* Kurangi padding di mobile */
+     }
+}
+/* --- Akhir Revisi CSS Kontak Overlay --- */
+
+/* --- Penyesuaian Dropdown Menu Desktop Modern --- */
+@media (min-width: 992px) { /* Terapkan hanya untuk layar besar (desktop) */
+
+    .navbar .dropdown-menu {
+        background-color: var(--section-bg-color); /* Warna krem */
+        border: 1px solid rgba(92, 58, 31, 0.15); /* Border coklat transparan halus */
+        border-radius: var(--border-radius-small); /* Sudut sedikit melengkung */
+        box-shadow: 0 0.3rem 0.8rem rgba(47, 26, 12, 0.1); /* Bayangan lebih lembut */
+        margin-top: 0.5rem; /* Beri sedikit jarak dari parent */
+        padding: 0.5rem 0; /* Sesuaikan padding vertikal */
+
+        /* Animasi fade-in */
+        opacity: 0;
+        visibility: hidden; /* Sembunyikan saat tidak dihover */
+        transform: translateY(10px); /* Mulai sedikit dari bawah */
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease, margin-top 0.3s ease;
+        pointer-events: none; /* Nonaktifkan interaksi saat tersembunyi */
+    }
+
+    /* Tampilkan dropdown saat parent di-hover */
+    .navbar .nav-item.dropdown:hover > .dropdown-menu {
+        opacity: 1;
+        visibility: visible; /* Tampilkan */
+        transform: translateY(0); /* Kembali ke posisi normal */
+        margin-top: 0; /* Hilangkan margin atas saat muncul */
+        pointer-events: auto; /* Aktifkan interaksi */
+    }
+
+    /* Hilangkan segitiga default */
+    .navbar .dropdown-menu::before {
+        display: none;
+    }
+
+    /* Styling item dropdown */
+    .navbar .dropdown-item {
+        color: var(--secondary-color); /* Warna teks coklat */
+        padding: 0.5rem 1.2rem; /* Sesuaikan padding item */
+        font-weight: 400; /* Sedikit lebih tipis */
+        transition: background-color 0.2s ease, color 0.2s ease; /* Transisi halus */
+        display: flex; /* Untuk ikon (opsional) */
+        align-items: center; /* Untuk ikon (opsional) */
+    }
+
+    /* Efek hover/fokus pada item dropdown */
+    .navbar .dropdown-item:hover,
+    .navbar .dropdown-item:focus,
+    .navbar .dropdown-item.active { /* Gaya untuk item aktif */
+        background-color: rgba(212, 175, 55, 0.1); /* Latar belakang gold sangat transparan */
+        color: var(--custom-btn-bg-hover-color); /* Warna light brown saat hover */
+    }
+
+     /* Opsional: Tambahkan ikon (jika Anda menambahkannya di HTML) */
+    .navbar .dropdown-item i {
+        margin-right: 0.5rem;
+        font-size: 1rem;
+        color: var(--primary-color); /* Warna ikon gold */
+    }
+
+}
+/* --- Akhir Penyesuaian Dropdown Menu Desktop Modern --- */
+
+/* --- Menu Mobile Model Baru (Mirip Contoh) --- */
+@media (max-width: 991.98px) {
+
+    /* Aturan untuk menggeser #page-wrapper */
+    #page-wrapper.mobile-menu-open {
+        transform: translateX(-70%); /* Sesuaikan persentase jika perlu */
+    }
+
+    /* Override default collapse behavior for slide-in */
+    .navbar-collapse {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: auto;
+        width: 85%;
+        max-width: 350px;
+        height: 100vh;
+        background: #5C3A1F; /* Warna dasar Coklat Menengah */
+        z-index: 1045;
+        padding: 0; /* Hapus padding utama, atur per bagian */
+        border-left: 1px solid rgba(212, 175, 55, 0.2);
+        box-shadow: -4px 0px 15px rgba(0, 0, 0, 0.2);
+        transform: translateX(100%);
+        transition: transform 0.35s ease-in-out, visibility 0s linear 0.35s;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        overflow-y: auto;
+        visibility: hidden;
+    }
+
+    .navbar-collapse.show {
+        transform: translateX(0);
+        visibility: visible;
+        transition: transform 0.35s ease-in-out;
+    }
+
+    .navbar-collapse.collapsing {
+        height: 100vh !important;
+        transition: transform 0.35s ease-in-out;
+        visibility: visible;
+    }
+     .navbar-collapse:not(.show):not(.collapsing) {
+         visibility: hidden;
+     }
+
+
+     /* Kontainer untuk Logo dan Tombol Close */
+    .mobile-menu-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        /* Background sedikit lebih gelap untuk header */
+        background-color: #2F1A0C; /* Coklat Paling Gelap */
+        padding: 0.8rem 1rem; /* Sesuaikan padding header */
+        width: 100%;
+        flex-shrink: 0;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Shadow halus di bawah header */
+    }
+
+    .mobile-menu-header .navbar-brand {
+        margin-right: 0;
+        padding: 0;
+    }
+     .mobile-menu-header .navbar-brand img {
+         height: 35px;
+         filter: brightness(0) invert(1);
+     }
+
+    .mobile-menu-header .btn-close {
+        background: none;
+        opacity: 0.8;
+        font-size: 1.2rem;
+        filter: brightness(0) invert(1);
+        padding: 0.5rem;
+    }
+    .mobile-menu-header .btn-close:focus {
+        box-shadow: none;
+        opacity: 1;
+    }
+
+
+    /* Area Menu Utama */
+    .navbar-nav {
+        width: 100%;
+        text-align: left;
+        flex-grow: 1;
+        padding-top: 1rem; /* Beri jarak dari header */
+        padding-bottom: 1rem;
+    }
+
+    .navbar-nav .nav-item {
+        margin-bottom: 0;
+    }
+
+    .navbar-nav .nav-link,
+    .navbar-nav .dropdown-toggle {
+        color: #F8F4ED; /* Krem terang */
+        font-size: 1.1rem;
+        font-weight: 500;
+        padding: 1rem 1.5rem; /* Padding lebih besar */
+        display: block;
+        width: 100%;
+        border: none; /* Hapus border bawah */
+        border-radius: 0;
+        transition: background-color 0.2s ease, color 0.2s ease;
+        text-align: left;
+    }
+     /* Tambahkan border bawah lagi KECUALI untuk item terakhir */
+    .navbar-nav .nav-item:not(:last-child) > .nav-link {
+        border-bottom: 1px solid rgba(248, 244, 237, 0.08);
+    }
+
+
+    /* Hilangkan ikon panah default dropdown */
+    .navbar-collapse .dropdown-toggle::after {
+        display: none;
+    }
+
+    /* Hover & Active state */
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link:focus,
+    .navbar-nav .nav-link.active,
+    .navbar-nav .dropdown-toggle:hover,
+    .navbar-nav .dropdown-toggle:focus {
+        background-color: rgba(212, 175, 55, 0.1); /* Gold transparan */
+        color: #D4AF37; /* Gold */
+    }
+
+    /* Gaya KHUSUS untuk Parent Dropdown ("Halaman Lain") saat dropdown TERBUKA */
+    .navbar-collapse .nav-item.dropdown .dropdown-toggle[aria-expanded="true"] {
+        background-color: rgba(212, 175, 55, 0.1); /* Gold transparan */
+        color: #D4AF37; /* Gold */
+        /* Optional: Tambah border atau indikator */
+        /* border-left: 3px solid #D4AF37; */
+        /* padding-left: calc(1.5rem - 3px); */
+    }
+
+    /* Submenu styling - Ganti background & atur padding */
+    .navbar-collapse .dropdown-menu {
+        background-color: rgba(47, 26, 12, 0.5); /* Coklat gelap transparan untuk submenu */
+        border: none;
+        box-shadow: none; /* Hapus shadow */
+        padding: 0; /* Hapus padding default */
+        margin: 0;
+        width: 100%;
+        border-radius: 0;
+        position: static !important;
+        float: none !important;
+        border-top: none; /* Hapus border top */
+    }
+
+    /* Sembunyikan dropdown menu secara default */
+     .navbar-collapse .dropdown-menu:not(.show) {
+         display: none;
+     }
+
+    /* Item di dalam dropdown */
+    .navbar-collapse .dropdown-item {
+        color: #F8F4ED; /* Warna Krem lebih terang untuk item submenu */
+        font-size: 1rem;
+        padding: 0.8rem 1.5rem 0.8rem 2.5rem; /* Padding dengan indentasi kiri lebih jelas */
+        text-align: left;
+        transition: background-color 0.2s ease, color 0.2s ease;
+        border: none;
+        background-color: transparent; /* Pastikan transparan */
+        /* Tambahkan border halus antar item submenu */
+         border-bottom: 1px solid rgba(248, 244, 237, 0.05);
+    }
+     .navbar-collapse .dropdown-menu li:last-child .dropdown-item {
+         border-bottom: none; /* Hapus border di item terakhir */
+     }
+
+
+    .navbar-collapse .dropdown-item:hover,
+    .navbar-collapse .dropdown-item:focus,
+    .navbar-collapse .dropdown-item.active {
+        background-color: rgba(212, 175, 55, 0.2); /* Gold transparan lebih pekat */
+        color: #ffffff; /* Putih */
+    }
+
+
+    /* Tombol toggler (hamburger) */
+    .navbar-toggler {
+        z-index: 1046;
+        border: none;
+        padding: 0.25rem 0.5rem;
+    }
+    .navbar-toggler:focus {
+        box-shadow: none;
+    }
+
+    .sticky-wrapper.is-sticky .navbar-toggler .navbar-toggler-icon,
+    .navbar:not(.is-sticky) .navbar-toggler .navbar-toggler-icon {
+         background-image: var(--bs-navbar-toggler-icon-bg);
+         filter: brightness(0) invert(1);
+    }
+
+    /* Tombol Kontak di header */
+    .navbar .d-lg-none.ms-auto .btn {
+        padding: 5px 10px;
+        font-size: 0.8rem;
+    }
+
+    /* Sembunyikan tombol kontak di dalam menu */
+    .navbar-collapse .d-none.d-lg-block {
+         display: none !important;
+    }
+
+}
+/* --- Akhir Menu Mobile Model Baru --- */
