@@ -1,95 +1,102 @@
 # Website Promosi Desa Wisata Kampung Jawa Sukorejo
 
-## Deskripsi Proyek
-
-Ini adalah website *front-end* statis yang dirancang untuk mempromosikan **Kampung Jawa Sukorejo (KJS)**, sebuah desa wisata budaya yang berlokasi di Sukorejo, Tuban. Website ini berfungsi sebagai gerbang digital untuk memperkenalkan sejarah, filosofi, kegiatan budaya, serta paket wisata yang ditawarkan kepada calon pengunjung.
-
-Tujuan utama dari proyek ini adalah untuk menarik wisatawan dengan menyajikan informasi yang kaya, visual yang menarik, dan alur pengguna yang jelas, dari halaman utama hingga detail acara dan paket wisata.
-
----
-
-## Pratinjau
-
-![Pratinjau Website Kampung Jawa Sukorejo](images/hero-background_.jpg)
-*(Tips: Ganti `hero-background_.jpg` dengan screenshot halaman utama yang lebih representatif jika Anda mau)*
-
----
+Website statis untuk mempromosikan **Kampung Jawa Sukorejo (KJS)**, desa wisata budaya di Sukorejo, Parengan, Tuban. Website ini memperkenalkan cerita desa, profil pengelola, paket wisata, acara budaya, galeri kegiatan, dan kanal pemesanan untuk calon pengunjung.
 
 ## Fitur Utama
 
--   **Halaman Beranda (`index.html`):** Berisi *hero section* yang menarik, pengenalan singkat tentang KJS, profil pengelola, ringkasan tiga paket wisata utama, dan cuplikan acara unggulan.
--   **Halaman Daftar Acara (`event-listing.html`):** Menyajikan daftar lengkap acara dan kegiatan budaya yang dilestarikan di desa, seperti Festival Seni Sukorejo (FSS) dan Tradisi Manganan, lengkap dengan deskripsi dan jadwal.
--   **Halaman Detail Paket Wisata (`paket-detail.html`):** Memberikan rincian mendalam untuk setiap paket wisata ("Sinau Sedino", "Ngleluri Budaya", dan "Pusaka Jawi"), termasuk fasilitas, program, harga, dan gambar yang relevan.
--   **Desain Responsif:** Dibangun dengan Bootstrap 5, memastikan tampilan optimal di berbagai perangkat, mulai dari desktop hingga ponsel.
--   **Interaktivitas:** Dilengkapi dengan animasi *hover* pada gambar, *sticky navigation bar*, dan tautan antar halaman yang fungsional untuk pengalaman pengguna yang lebih baik.
--   **Branding yang Konsisten:** Skema warna, tipografi, dan logo digunakan secara konsisten di semua halaman untuk membangun identitas visual yang kuat.
+- **Halaman beranda (`index.html`)**: hero section, video pengenalan, cerita singkat KJS, profil pengelola, highlight pengalaman, paket wisata, acara unggulan, galeri berjalan, panduan kunjungan, rekomendasi paket, FAQ, dan kontak.
+- **Halaman daftar acara (`event-listing.html`)**: informasi Festival Seni Sukorejo, workshop budaya, Tradisi Manganan, dan Pagelaran Sandur.
+- **Halaman detail paket (`paket-detail.html`)**: rincian paket Sinau Sedino, Ngleluri Budaya, dan Pusaka Jawi lengkap dengan fasilitas, harga, dan tombol pemesanan WhatsApp.
+- **Galeri berjalan dengan zoom**: carousel otomatis di halaman utama, gambar bisa diklik untuk dibuka dalam modal zoom, lengkap dengan navigasi gambar sebelumnya/selanjutnya dan animasi transisi halus.
+- **Tombol WhatsApp cepat**: tombol mengambang tersedia di halaman utama, daftar acara, dan detail paket.
+- **FAQ interaktif**: accordion Bootstrap untuk membantu calon pengunjung memahami paket dan jadwal.
+- **Responsif mobile**: tampilan disesuaikan untuk ponsel, tablet, dan desktop, termasuk perbaikan ukuran foto profil agar seragam.
+- **SEO dasar**: meta description, Open Graph, dan structured data `TouristDestination`.
 
----
+## Teknologi
 
-## Tumpukan Teknologi (Technology Stack)
-
--   **HTML5:** Untuk struktur konten website.
--   **CSS3:** Untuk penataan gaya kustom, termasuk skema warna, tata letak, dan animasi.
--   **Bootstrap 5:** Sebagai kerangka kerja utama untuk komponen UI dan desain responsif.
--   **JavaScript:** Digunakan oleh template asli untuk fungsionalitas dinamis seperti *sticky navbar* dan *animated headline*.
--   **Google Fonts (Poppins):** Untuk tipografi utama di seluruh situs.
-
----
+- HTML5
+- CSS3
+- Bootstrap 5
+- Bootstrap Icons
+- JavaScript
+- jQuery
+- Google Fonts, Poppins
 
 ## Struktur Proyek
 
-```
-
+```text
 .
-├── css/
-│   ├── bootstrap.min.css
-│   ├── bootstrap-icons.css
-│   ├── templatemo-tiya-golf-club.css
-│   └── style.css
-├── js/
-│   ├── animated-headline.js
-│   ├── click-scroll.js
-│   ├── custom.js
-│   ├── jquery.min.js
-│   ├── jquery.sticky.js
-│   └── modernizr.js
-├── images/
-│   ├── FSS.JPG
-│   ├── hero-background\_.jpg
-│   ├── paket-ngleluri-budaya.jpg
-│   ├── paket-pusaka-jawi.jpg
-│   ├── paket-sinau-sedino.jpg
-│   ├── profil-\*.jpg
-│   └── ... (semua gambar lainnya)
-├── index.html
-├── event-listing.html
-├── paket-detail.html
-└── README.md
-
+|-- css/
+|   |-- bootstrap.min.css
+|   |-- bootstrap-icons.css
+|   |-- templatemo-tiya-golf-club.css
+|   `-- style.css
+|-- fonts/
+|   |-- bootstrap-icons.woff
+|   `-- bootstrap-icons.woff2
+|-- images/
+|   |-- FSS.JPG
+|   |-- galeri-karawitan.jpg
+|   |-- galeri-kuliner.jpg
+|   |-- galeri-pencak-dor.jpg
+|   |-- galeri-tari.jpg
+|   |-- hero-background_.jpg
+|   |-- manganan.jpg
+|   |-- paket-ngleluri-budaya.jpg
+|   |-- paket-pusaka-jawi.jpg
+|   |-- paket-sinau-sedino.jpg
+|   |-- profil-*.jpg
+|   `-- sandur.jpg
+|-- js/
+|   |-- animated-headline.js
+|   |-- bootstrap.bundle.min.js
+|   |-- click-scroll.js
+|   |-- custom.js
+|   |-- jquery.min.js
+|   |-- jquery.sticky.js
+|   |-- modernizr.js
+|   `-- script.js
+|-- index.html
+|-- event-listing.html
+|-- paket-detail.html
+`-- README.md
 ```
 
----
+## Cara Menjalankan
 
-## Cara Menjalankan Proyek
+Website ini bersifat statis, jadi bisa dibuka langsung dari browser:
 
-Karena ini adalah website statis, tidak diperlukan instalasi atau server khusus. Cukup buka salah satu file `.html` (terutama `index.html`) langsung di browser pilihan Anda.
+```text
+index.html
+```
 
----
+Untuk pratinjau yang lebih stabil, jalankan server lokal dari folder proyek, lalu buka alamat lokal di browser. Contoh jika memakai Node.js:
 
-## Kustomisasi
+```bash
+npx serve .
+```
 
-Website ini dirancang agar mudah dimodifikasi:
+## Area Kustomisasi
 
--   **Mengubah Warna:** Skema warna utama (emas, cokelat, krem) dapat diubah dengan mudah di dalam file `css/style.css` pada bagian variabel `:root`.
--   **Mengubah Konten:** Semua teks (deskripsi, harga, jadwal, dll.) dapat diubah langsung di dalam file HTML yang relevan.
--   **Mengganti Gambar:** Untuk mengganti gambar, cukup letakkan file gambar baru di dalam folder `images/` dan pastikan nama filenya sesuai dengan yang dipanggil di dalam tag `<img>` pada file HTML.
+- **Konten halaman utama**: edit teks dan section di `index.html`.
+- **Daftar acara**: edit `event-listing.html`.
+- **Detail paket dan tombol WhatsApp paket**: edit `paket-detail.html`.
+- **Warna, layout, responsif, galeri, dan animasi**: edit `css/style.css`.
+- **Interaksi menu mobile dan modal galeri zoom**: edit `js/custom.js`.
+- **Gambar galeri**: simpan gambar di folder `images/`, lalu sesuaikan `src` dan `data-gallery-src` di bagian galeri halaman utama.
 
----
+## Catatan Pengembangan Terbaru
+
+- Menambahkan section panduan kunjungan, rekomendasi paket, dan FAQ.
+- Mengembangkan galeri menjadi carousel otomatis.
+- Menambahkan fitur zoom galeri dengan navigasi overlay kiri/kanan.
+- Menambahkan animasi saat zoom dan transisi next/prev.
+- Memperbaiki ukuran foto profil agar lebih seragam di mobile.
+- Memperbaiki beberapa metadata, ikon, link eksternal, dan tombol WhatsApp cepat.
 
 ## Kredit
 
--   **Template Asli:** Desain dasar diadaptasi dari template "Tiya Golf Club" oleh [TemplateMo](https://templatemo.com/).
--   **Pengembangan & Kustomisasi:** Angga Wijanarko
--   **Konten & Foto:** Kampung Jawa Sukorejo.
-
-```
+- **Template dasar**: Tiya Golf Club by [TemplateMo](https://templatemo.com/)
+- **Pengembangan dan kustomisasi**: Angga Wijanarko
+- **Konten dan foto**: Kampung Jawa Sukorejo
