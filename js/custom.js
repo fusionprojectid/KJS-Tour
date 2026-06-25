@@ -141,7 +141,131 @@
         .attr('alt', '');
     });
 
+    // 1. DYNAMIC BOOKING FORM & COST ESTIMATOR
+    var $bookingForm = $('#kjsBookingForm');
+    if ($bookingForm.length) {
+        var $bookingPackage = $('#bookingPackage');
+        var $bookingQty = $('#bookingQty');
+        var $bookingQtyWarning = $('#bookingQtyWarning');
+        
+        var $summaryPackage = $('#summaryPackage');
+        var $summaryUnitPrice = $('#summaryUnitPrice');
+        var $summaryQty = $('#summaryQty');
+        var $summaryTotal = $('#summaryTotal');
+
+        function formatRupiah(number) {
+            return 'Rp ' + number.toLocaleString('id-ID');
+        }
+
+        function calculateEstimator() {
+            var selectedOption = $bookingPackage.find('option:selected');
+            var packageName = selectedOption.text().split(' (')[0];
+            var price = parseInt(selectedOption.data('price')) || 0;
+            var qty = parseInt($bookingQty.val()) || 0;
+
+            // Validasi & warning minimal 10 orang
+            if (qty < 10) {
+                $bookingQtyWarning.removeClass('d-none');
+            } else {
+                $bookingQtyWarning.addClass('d-none');
+            }
+
+            var total = price * qty;
+
+            // Update UI Card
+            $summaryPackage.text(packageName);
+            $summaryUnitPrice.text(formatRupiah(price));
+            $summaryQty.text(qty + ' Orang');
+            $summaryTotal.text(formatRupiah(total));
+        }
+
+        // Event Listeners
+        $bookingPackage.on('change', calculateEstimator);
+        $bookingQty.on('input change', calculateEstimator);
+
+        // Initial Calculation
+        calculateEstimator();
+
+        // Submit Form
+        $bookingForm.on('submit', function (e) {
+            e.preventDefault();
+            
+            var name = $('#bookingName').val();
+            var date = $('#bookingDate').val();
+            var selectedOption = $bookingPackage.find('option:selected');
+            var packageName = selectedOption.text().split(' (')[0];
+            var price = parseInt(selectedOption.data('price')) || 0;
+            var qty = parseInt($bookingQty.val()) || 0;
+            var notes = $('#bookingNotes').val() || '-';
+            var total = price * qty;
+
+            // Format tanggal agar lebih mudah dibaca (YYYY-MM-DD -> DD/MM/YYYY)
+            var formattedDate = date;
+            if (date) {
+                var dateParts = date.split('-');
+                if (dateParts.length === 3) {
+                    formattedDate = dateParts[2] + '/' + dateParts[1] + '/' + dateParts[0];
+                }
+            }
+
+            // Pesan WhatsApp terformat rapi
+            var waMessage = "Halo Pokdarwis KJS, saya ingin memesan paket wisata:\n\n" +
+                "*Nama Lengkap:* " + name + "\n" +
+                "*Tanggal Kunjungan:* " + formattedDate + "\n" +
+                "*Pilihan Paket:* " + packageName + "\n" +
+                "*Jumlah Peserta:* " + qty + " Orang\n" +
+                "*Estimasi Total Biaya:* " + formatRupiah(total) + "\n" +
+                "*Catatan Tambahan:* " + notes + "\n\n" +
+                "Mohon konfirmasi ketersediaan jadwal. Terima kasih!";
+
+            var encodedMessage = encodeURIComponent(waMessage);
+            var waUrl = "https://wa.me/6285232705259?text=" + encodedMessage;
+
+            window.open(waUrl, '_blank');
+        });
+    }
+
+    // 2. QUICK INQUIRY FORM
+    var $inquiryForm = $('#kjsInquiryForm');
+    if ($inquiryForm.length) {
+        $inquiryForm.on('submit', function (e) {
+            e.preventDefault();
+
+            var name = $('#inquiryName').val();
+            var phone = $('#inquiryPhone').val();
+            var message = $('#inquiryMessage').val();
+
+            var waMessage = "Halo Pokdarwis KJS, saya ingin mengajukan pertanyaan:\n\n" +
+                "*Nama Lengkap:* " + name + "\n" +
+                "*Nomor Kontak/WA:* " + phone + "\n" +
+                "*Pertanyaan/Pesan:* " + message + "\n\n" +
+                "Mohon info lebih lanjut. Terima kasih!";
+
+            var encodedMessage = encodeURIComponent(waMessage);
+            var waUrl = "https://wa.me/6285232705259?text=" + encodedMessage;
+
+            window.open(waUrl, '_blank');
+        });
+    }
+
     // Sticky Navbar (Kode ini ada di jquery.sticky.js)
     // Pastikan file jquery.sticky.js dimuat dan kode $(document).ready di dalamnya berjalan
+
+    // Back to Top Button behavior
+    var $backToTop = $('#backToTop');
+    if ($backToTop.length) {
+        $(window).on('scroll', function () {
+            if ($(this).scrollTop() > 300) {
+                $backToTop.addClass('show');
+            } else {
+                $backToTop.removeClass('show');
+            }
+        });
+
+        $backToTop.on('click', function () {
+            $('html, body').animate({ scrollTop: 0 }, 300);
+            return false;
+        });
+    }
 
 })(window.jQuery);

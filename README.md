@@ -30,7 +30,7 @@ Website statis untuk mempromosikan **Kampung Jawa Sukorejo (KJS)**, desa wisata 
 |-- css/
 |   |-- bootstrap.min.css
 |   |-- bootstrap-icons.css
-|   |-- templatemo-tiya-golf-club.css
+|   |-- kjs-tour.css
 |   `-- style.css
 |-- fonts/
 |   |-- bootstrap-icons.woff

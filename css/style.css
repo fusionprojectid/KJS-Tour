@@ -15,7 +15,7 @@ body {
 
 
 .hero-bg {
-    background-image: url('../images/hero-background_.jpg');
+    background-image: url('../images/hero-background_.webp');
     background-size: cover;
     background-position: center;
 }
@@ -47,6 +47,7 @@ body {
   --primary-color:                #D4AF37; /* Gold */
   --secondary-color:              #5C3A1F; /* Brown */
   --section-bg-color:             #F8F4ED; /* Light Cream */
+  --section-bg-beige-color:       #F2EBE1; /* Soft Beige */
   --custom-btn-bg-color:          #D4AF37; /* Gold */
   --custom-btn-bg-hover-color:    #8B4513; /* Light Brown */
   --link-hover-color:             #D4AF37; /* Gold */
@@ -62,12 +63,12 @@ body {
   background: linear-gradient(to top, #F8F4ED, #5C3A1F); /* Gradasi Krem ke Cokelat Solid */
 }
 
-/* Offcanvas (jika masih digunakan, sesuaikan warnanya) */
+/* Offcanvas */
 .offcanvas {
     background-color: #5C3A1F; /* Brown */
 }
 
-/* Form Styles (jika ada form lain) */
+/* Form Styles */
 .membership-form {
     background-color: #5C3A1F; /* Brown */
 }
@@ -140,7 +141,11 @@ body {
 
 /* Experience highlights */
 .experience-section {
-    background-color: #ffffff;
+    /* Background color controlled by section-bg utility classes */
+}
+
+.section-bg-beige {
+    background-color: var(--section-bg-beige-color, #F2EBE1) !important;
 }
 
 .highlight-card {
@@ -780,29 +785,141 @@ body {
     margin-bottom: 0;
     list-style: none;
 }
+
+/* Contact Info Styles */
+.contact-info-container {
+    background-color: #F8F4ED;
+    padding: 30px;
+    border-radius: 15px;
+    height: 100%;
+}
+
+.contact-person {
+    margin-bottom: 20px;
+}
+
+.contact-person h5 {
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: var(--secondary-color); /* Sesuaikan warna */
+}
+
+.contact-person p {
+    margin-bottom: 0;
+    line-height: 1.5;
+    color: #5C3A1F;
+}
+
+.contact-person .contact-link {
+    color: #2F1A0C;
+    text-decoration: none;
+}
+.contact-person .contact-link:hover {
+    color: #D4AF37;
+}
+
+.contact-info-body {
+    text-align: left; /* PENTING: Pastikan rata kiri untuk desktop */
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.contact-info-body strong {
+    color: var(--white-color);
+    font-size: 1.2rem; /* Font size desktop */
+    display: block;
+    margin-bottom: 10px;
+}
+
+.contact-info-body p {
+    margin-bottom: 5px;
+}
+
+.contact-info-body .contact-link {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    transition: color 0.3s;
+    font-size: 1rem; /* Font size link desktop */
+    word-break: normal; /* Pastikan tidak break di desktop */
+    display: inline; /* Default display */
+    line-height: normal; /* Default line height */
+}
+.contact-info-body .contact-link:hover {
+    color: var(--primary-color);
+}
+
+.contact-info-footer {
+    text-align: center;
+}
+
+.contact-info-footer a {
+    display: inline-block;
+    background-color: var(--custom-btn-bg-hover-color);
+    color: var(--white-color);
+    padding: 10px 25px; /* Padding tombol desktop */
+    border-radius: var(--border-radius-small);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem; /* Font size tombol desktop */
+    transition: background-color 0.3s;
+}
+
+.contact-info-footer a:hover {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+/* Footer Styles */
+.site-footer {
+    background-color: #ffffff; /* Pastikan background putih */
+    color: #5C3A1F;
+    padding-top: 50px; /* Jarak atas sebelum konten footer */
+}
+
+.site-footer p,
+.site-footer a {
+    color: #5C3A1F;
+}
+
+.site-footer .navbar-brand-text {
+    color: #5C3A1F !important;
+}
+
+.site-footer-title {
+    color: #2F1A0C; /* Warna coklat paling gelap untuk judul */
+    font-weight: 600;
+}
+
+.social-icon {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
 .social-icon li {
     display: inline-block;
     margin: 0 5px; /* Jarak antar ikon */
 }
 
 .social-icon-link {
-    border-radius: var(--border-radius-large);
+    border-radius: 50%;
     color: var(--white-color);
     font-size: var(--p-font-size);
-    display: block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     margin-right: 0; /* Hapus margin kanan default */
     text-decoration: none;
     width: 35px;
     height: 35px;
-    line-height: 35px;
-    text-align: center;
-    transition: background-color .3s;
+    transition: background-color 0.3s, transform 0.2s;
     background-color: #5C3A1F;
 }
 
 .social-icon-link:hover {
     background-color: var(--primary-color); /* Gold saat hover */
     color: var(--white-color);
+    transform: translateY(-3px);
 }
 
 .copyright-text {
@@ -1124,14 +1241,18 @@ body {
         min-height: 320px;
     }
 
+    body.mobile-menu-open {
+        overflow: hidden;
+    }
+
     body.mobile-menu-open #page-wrapper {
-        transform: translateX(-70%);
+        /* Disable translation to prevent pushing fixed-positioned elements off-screen */
         transition: transform 0.35s ease-in-out;
     }
 
     /* Aturan untuk menggeser #page-wrapper */
     #page-wrapper.mobile-menu-open {
-        transform: translateX(-70%); /* Sesuaikan persentase jika perlu */
+        /* Disable translation to prevent pushing fixed-positioned elements off-screen */
     }
 
     /* Override default collapse behavior for slide-in */
@@ -1352,3 +1473,220 @@ body {
         grid-column: auto;
     }
 }
+
+/* --- Premium Booking & Inquiry Forms Styling --- */
+.booking-form-wrap {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 15px 35px rgba(92, 58, 31, 0.08);
+    border: 1px solid rgba(92, 58, 31, 0.05);
+}
+
+.custom-form .form-label {
+    color: #5C3A1F;
+    font-weight: 500;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.custom-form .form-control,
+.custom-form .form-select {
+    background-color: #FCFAF7;
+    border: 1.5px solid rgba(92, 58, 31, 0.12);
+    border-radius: 10px;
+    color: #2F1A0C;
+    padding: 12px 18px;
+    font-size: 0.95rem;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.custom-form .form-control:focus,
+.custom-form .form-select:focus {
+    background-color: #ffffff;
+    border-color: #D4AF37;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.15);
+}
+
+.custom-form .form-control::placeholder {
+    color: #a08c7c;
+    opacity: 0.7;
+}
+
+/* Estimator Result Card styling */
+.estimator-result-card {
+    background-color: #F8F4ED;
+    border-radius: 14px;
+    border: 1.5px dashed #D4AF37;
+    transition: all 0.3s ease;
+}
+
+.estimator-result-card:hover {
+    box-shadow: 0 8px 25px rgba(92, 58, 31, 0.08);
+    transform: translateY(-2px);
+}
+
+.estimator-result-card h5 {
+    font-weight: 700;
+    color: #2F1A0C;
+}
+
+.estimator-result-card span {
+    color: #5C3A1F;
+    font-size: 0.95rem;
+}
+
+.estimator-result-card strong {
+    color: #2F1A0C;
+    font-size: 1rem;
+}
+
+.estimator-result-card hr {
+    border-top: 1px dashed rgba(92, 58, 31, 0.2);
+    margin: 15px 0;
+    opacity: 1;
+}
+
+.text-kjs-gold {
+    color: #D4AF37 !important;
+}
+
+.text-kjs-gold {
+    color: #D4AF37 !important;
+    font-weight: 700;
+}
+
+/* Submit buttons custom hover and active states */
+.custom-btn {
+    border-radius: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.custom-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(92, 58, 31, 0.18);
+}
+
+.custom-btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(92, 58, 31, 0.12);
+}
+
+/* Responsive fixes for forms */
+@media (max-width: 767.98px) {
+    .booking-form-wrap {
+        padding: 25px 20px;
+    }
+}
+
+/* Missing Social Media Icon Unicode Mappings */
+.bi-instagram::before { content: "\f437"; }
+.bi-tiktok::before { content: "\f6cc"; }
+.bi-youtube::before { content: "\f62b"; }
+
+/* Premium Social Media Icons styling */
+.social-icon-link {
+    background-color: #ffffff !important;
+    border: 1.5px solid rgba(92, 58, 31, 0.25) !important;
+    color: var(--secondary-color, #5C3A1F) !important;
+    width: 42px !important;
+    height: 42px !important;
+    font-size: 1.1rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 50% !important;
+    transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05) !important;
+}
+
+.social-icon-link:hover {
+    color: #ffffff !important;
+    transform: translateY(-4px) scale(1.15) rotate(8deg) !important;
+}
+
+.social-icon-link.bi-instagram:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%) !important;
+    border-color: transparent !important;
+    box-shadow: 0 6px 15px rgba(220, 39, 67, 0.35) !important;
+}
+
+.social-icon-link.bi-tiktok:hover {
+    background-color: #010101 !important;
+    border-color: #010101 !important;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25) !important;
+}
+
+.social-icon-link.bi-youtube:hover {
+    background-color: #ff0000 !important;
+    border-color: #ff0000 !important;
+    box-shadow: 0 6px 15px rgba(255, 0, 0, 0.3) !important;
+}
+
+/* Premium Footer background differentiation */
+.site-footer {
+    background-color: var(--section-bg-beige-color, #F2EBE1) !important;
+    border-top: 1px solid rgba(92, 58, 31, 0.08) !important;
+    padding-top: 80px !important;
+    padding-bottom: 120px !important;
+}
+
+.site-footer-title {
+    color: var(--secondary-color, #5C3A1F) !important;
+    font-weight: 700 !important;
+}
+
+.site-footer p {
+    color: var(--p-color, #5C3A1F) !important;
+}
+
+.site-footer .border-bottom {
+    border-bottom: 1px dashed rgba(92, 58, 31, 0.15) !important;
+}
+
+.site-footer svg {
+    height: 90px !important;
+    width: 100% !important;
+    object-fit: fill !important;
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 85px;
+    right: 22px;
+    background-color: var(--primary-color, #D4AF37) !important;
+    color: #ffffff !important;
+    border: none !important;
+    width: 44px;
+    height: 44px;
+    border-radius: 50% !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1.2rem !important;
+    cursor: pointer !important;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1040;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    box-shadow: 0 4px 10px rgba(92, 58, 31, 0.2) !important;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background-color: var(--secondary-color, #5C3A1F) !important;
+    transform: translateY(-4px) !important;
+    box-shadow: 0 6px 15px rgba(92, 58, 31, 0.3) !important;
+}
+
