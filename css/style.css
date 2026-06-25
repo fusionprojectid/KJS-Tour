@@ -139,10 +139,7 @@ body {
     text-align: right;
 }
 
-/* Experience highlights */
-.experience-section {
-    /* Background color controlled by section-bg utility classes */
-}
+/* Experience highlights background color controlled by section-bg utility classes */
 
 .section-bg-beige {
     background-color: var(--section-bg-beige-color, #F2EBE1) !important;
@@ -786,141 +783,13 @@ body {
     list-style: none;
 }
 
-/* Contact Info Styles */
-.contact-info-container {
-    background-color: #F8F4ED;
-    padding: 30px;
-    border-radius: 15px;
-    height: 100%;
-}
 
-.contact-person {
-    margin-bottom: 20px;
-}
-
-.contact-person h5 {
-    font-weight: 700;
-    margin-bottom: 5px;
-    color: var(--secondary-color); /* Sesuaikan warna */
-}
-
-.contact-person p {
-    margin-bottom: 0;
-    line-height: 1.5;
-    color: #5C3A1F;
-}
-
-.contact-person .contact-link {
-    color: #2F1A0C;
-    text-decoration: none;
-}
-.contact-person .contact-link:hover {
-    color: #D4AF37;
-}
-
-.contact-info-body {
-    text-align: left; /* PENTING: Pastikan rata kiri untuk desktop */
-    margin-bottom: 15px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.contact-info-body strong {
-    color: var(--white-color);
-    font-size: 1.2rem; /* Font size desktop */
-    display: block;
-    margin-bottom: 10px;
-}
-
-.contact-info-body p {
-    margin-bottom: 5px;
-}
-
-.contact-info-body .contact-link {
-    color: rgba(255, 255, 255, 0.85);
-    text-decoration: none;
-    transition: color 0.3s;
-    font-size: 1rem; /* Font size link desktop */
-    word-break: normal; /* Pastikan tidak break di desktop */
-    display: inline; /* Default display */
-    line-height: normal; /* Default line height */
-}
-.contact-info-body .contact-link:hover {
-    color: var(--primary-color);
-}
-
-.contact-info-footer {
-    text-align: center;
-}
-
-.contact-info-footer a {
-    display: inline-block;
-    background-color: var(--custom-btn-bg-hover-color);
-    color: var(--white-color);
-    padding: 10px 25px; /* Padding tombol desktop */
-    border-radius: var(--border-radius-small);
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 1rem; /* Font size tombol desktop */
-    transition: background-color 0.3s;
-}
-
-.contact-info-footer a:hover {
-    background-color: var(--primary-color);
-    color: var(--white-color);
-}
-
-/* Footer Styles */
-.site-footer {
-    background-color: #ffffff; /* Pastikan background putih */
-    color: #5C3A1F;
-    padding-top: 50px; /* Jarak atas sebelum konten footer */
-}
-
-.site-footer p,
-.site-footer a {
-    color: #5C3A1F;
-}
-
-.site-footer .navbar-brand-text {
-    color: #5C3A1F !important;
-}
-
-.site-footer-title {
-    color: #2F1A0C; /* Warna coklat paling gelap untuk judul */
-    font-weight: 600;
-}
-
-.social-icon {
-    padding-left: 0;
-    margin-bottom: 0;
-    list-style: none;
-}
 .social-icon li {
     display: inline-block;
     margin: 0 5px; /* Jarak antar ikon */
 }
 
-.social-icon-link {
-    border-radius: 50%;
-    color: var(--white-color);
-    font-size: var(--p-font-size);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 0; /* Hapus margin kanan default */
-    text-decoration: none;
-    width: 35px;
-    height: 35px;
-    transition: background-color 0.3s, transform 0.2s;
-    background-color: #5C3A1F;
-}
 
-.social-icon-link:hover {
-    background-color: var(--primary-color); /* Gold saat hover */
-    color: var(--white-color);
-    transform: translateY(-3px);
-}
 
 .copyright-text {
     font-size: var(--copyright-font-size);
@@ -1250,10 +1119,7 @@ body {
         transition: transform 0.35s ease-in-out;
     }
 
-    /* Aturan untuk menggeser #page-wrapper */
-    #page-wrapper.mobile-menu-open {
-        /* Disable translation to prevent pushing fixed-positioned elements off-screen */
-    }
+    /* Aturan untuk menggeser #page-wrapper: Disable translation to prevent pushing fixed-positioned elements off-screen */
 
     /* Override default collapse behavior for slide-in */
     .navbar-collapse {
@@ -1548,9 +1414,7 @@ body {
     opacity: 1;
 }
 
-.text-kjs-gold {
-    color: #D4AF37 !important;
-}
+
 
 .text-kjs-gold {
     color: #D4AF37 !important;
@@ -1604,6 +1468,8 @@ body {
     border-radius: 50% !important;
     transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05) !important;
+    text-decoration: none !important;
+    margin-right: 0 !important;
 }
 
 .social-icon-link:hover {
@@ -1651,8 +1517,15 @@ body {
 }
 
 .site-footer svg {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
     height: 90px !important;
     width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
     object-fit: fill !important;
 }
 
