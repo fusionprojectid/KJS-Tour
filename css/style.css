@@ -839,6 +839,7 @@ body {
         font-size: 1.5rem;
     }
 
+
     .hero-section h4,
     .hero-section h6 {
          font-size: 1rem;
@@ -867,6 +868,7 @@ body {
     }
     .hero-section .custom-btn-group .link {
          margin-bottom: 0;
+         text-align: center;
     }
      .hero-section .custom-btn-group .me-3 {
         margin-right: auto !important;
@@ -1119,8 +1121,6 @@ body {
         transition: transform 0.35s ease-in-out;
     }
 
-    /* Aturan untuk menggeser #page-wrapper: Disable translation to prevent pushing fixed-positioned elements off-screen */
-
     /* Override default collapse behavior for slide-in */
     .navbar-collapse {
         position: fixed;
@@ -1200,100 +1200,115 @@ body {
         width: 100%;
         text-align: left;
         flex-grow: 1;
-        padding-top: 1rem; /* Beri jarak dari header */
-        padding-bottom: 1rem;
+        padding: 1.5rem 1.25rem !important; /* Jarak dari tepi drawer menu */
     }
 
     .navbar-nav .nav-item {
-        margin-bottom: 0;
+        margin-bottom: 0.75rem !important; /* Jarak antar tombol menu */
     }
 
     .navbar-nav .nav-link,
     .navbar-nav .dropdown-toggle {
-        color: #F8F4ED; /* Krem terang */
-        font-size: 1.1rem;
-        font-weight: 500;
-        padding: 1rem 1.5rem; /* Padding lebih besar */
-        display: block;
-        width: 100%;
-        border: none; /* Hapus border bawah */
-        border-radius: 0;
-        transition: background-color 0.2s ease, color 0.2s ease;
-        text-align: left;
-    }
-     /* Tambahkan border bawah lagi KECUALI untuk item terakhir */
-    .navbar-nav .nav-item:not(:last-child) > .nav-link {
-        border-bottom: 1px solid rgba(248, 244, 237, 0.08);
+        color: #F8F4ED !important; /* Krem terang */
+        font-size: 1.05rem !important;
+        font-weight: 500 !important;
+        padding: 0.85rem 1.25rem !important; /* Padding tombol */
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        width: 100% !important;
+        border: 1px solid rgba(248, 244, 237, 0.1) !important; /* Border mewah */
+        background-color: rgba(248, 244, 237, 0.04) !important; /* Background semi-transparan */
+        border-radius: 12px !important; /* Tombol membulat modern */
+        transition: all 0.25s ease !important;
+        text-align: left !important;
     }
 
-
-    /* Hilangkan ikon panah default dropdown */
+    /* Chevron kustom untuk dropdown mobile */
     .navbar-collapse .dropdown-toggle::after {
-        display: none;
+        display: inline-block !important;
+        content: "\f282" !important; /* Icon chevron-down */
+        font-family: "bootstrap-icons" !important;
+        font-size: 0.85rem !important;
+        transition: transform 0.3s ease !important;
+        border: none !important;
+        margin-left: auto !important;
+        color: rgba(248, 244, 237, 0.6) !important;
+    }
+    
+    .navbar-collapse .dropdown-toggle[aria-expanded="true"]::after {
+        transform: rotate(180deg) !important;
+        color: #D4AF37 !important; /* Emas saat terbuka */
     }
 
-    /* Hover & Active state */
+    /* Hover & Active state tombol utama */
     .navbar-nav .nav-link:hover,
     .navbar-nav .nav-link:focus,
     .navbar-nav .nav-link.active,
     .navbar-nav .dropdown-toggle:hover,
     .navbar-nav .dropdown-toggle:focus {
-        background-color: rgba(212, 175, 55, 0.1); /* Gold transparan */
-        color: #D4AF37; /* Gold */
+        background-color: rgba(212, 175, 55, 0.15) !important; /* Emas transparan */
+        border-color: rgba(212, 175, 55, 0.3) !important;
+        color: #D4AF37 !important; /* Text Emas */
     }
 
     /* Gaya KHUSUS untuk Parent Dropdown ("Halaman Lain") saat dropdown TERBUKA */
     .navbar-collapse .nav-item.dropdown .dropdown-toggle[aria-expanded="true"] {
-        background-color: rgba(212, 175, 55, 0.1); /* Gold transparan */
-        color: #D4AF37; /* Gold */
-        /* Optional: Tambah border atau indikator */
-        /* border-left: 3px solid #D4AF37; */
-        /* padding-left: calc(1.5rem - 3px); */
+        background-color: rgba(212, 175, 55, 0.15) !important;
+        border-color: rgba(212, 175, 55, 0.3) !important;
+        color: #D4AF37 !important;
     }
 
     /* Submenu styling - Ganti background & atur padding */
     .navbar-collapse .dropdown-menu {
-        background-color: rgba(47, 26, 12, 0.5); /* Coklat gelap transparan untuk submenu */
-        border: none;
-        box-shadow: none; /* Hapus shadow */
-        padding: 0; /* Hapus padding default */
-        margin: 0;
-        width: 100%;
-        border-radius: 0;
+        display: block !important;
+        background-color: rgba(47, 26, 12, 0.45) !important; /* Coklat gelap transparan untuk submenu */
+        border: 1px solid rgba(248, 244, 237, 0.08) !important;
+        box-shadow: none !important; /* Hapus shadow */
+        padding: 0.5rem 0 !important;
+        margin: 0.5rem 0 0 0 !important; /* Beri jarak sedikit di bawah tombol utama */
+        width: 100% !important;
+        min-width: 100% !important;
+        max-width: 100% !important;
+        border-radius: 12px !important;
         position: static !important;
         float: none !important;
-        border-top: none; /* Hapus border top */
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        pointer-events: auto !important;
     }
 
     /* Sembunyikan dropdown menu secara default */
      .navbar-collapse .dropdown-menu:not(.show) {
-         display: none;
+         display: none !important;
      }
+
+    /* Hilangkan segitiga di mobile */
+    .navbar-collapse .dropdown-menu::before {
+        display: none !important;
+    }
 
     /* Item di dalam dropdown */
     .navbar-collapse .dropdown-item {
-        color: #F8F4ED; /* Warna Krem lebih terang untuk item submenu */
-        font-size: 1rem;
-        padding: 0.8rem 1.5rem 0.8rem 2.5rem; /* Padding dengan indentasi kiri lebih jelas */
-        text-align: left;
-        transition: background-color 0.2s ease, color 0.2s ease;
-        border: none;
-        background-color: transparent; /* Pastikan transparan */
-        /* Tambahkan border halus antar item submenu */
-         border-bottom: 1px solid rgba(248, 244, 237, 0.05);
+        color: #e3ded5 !important; /* Warna Krem lebih lembut untuk item submenu */
+        font-size: 0.95rem !important;
+        padding: 0.75rem 1.25rem !important;
+        margin: 0.25rem 0.5rem !important;
+        width: calc(100% - 1rem) !important;
+        text-align: left !important;
+        transition: all 0.2s ease !important;
+        border: none !important;
+        border-radius: 8px !important;
+        background-color: transparent !important;
     }
-     .navbar-collapse .dropdown-menu li:last-child .dropdown-item {
-         border-bottom: none; /* Hapus border di item terakhir */
-     }
-
 
     .navbar-collapse .dropdown-item:hover,
     .navbar-collapse .dropdown-item:focus,
     .navbar-collapse .dropdown-item.active {
-        background-color: rgba(212, 175, 55, 0.2); /* Gold transparan lebih pekat */
-        color: #ffffff; /* Putih */
+        background-color: rgba(212, 175, 55, 0.15) !important; /* Gold transparan lebih pekat */
+        color: #D4AF37 !important; /* Gold */
     }
-
 
     /* Tombol toggler (hamburger) */
     .navbar-toggler {
@@ -1561,5 +1576,171 @@ body {
     background-color: var(--secondary-color, #5C3A1F) !important;
     transform: translateY(-4px) !important;
     box-shadow: 0 6px 15px rgba(92, 58, 31, 0.3) !important;
+}
+
+/* ==========================================
+   News Card & Modal Styling (Halaman News)
+   ========================================== */
+.news-card {
+    background-color: #FFFFFF;
+    border: 1px solid #F0D9B6;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.news-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(92, 58, 31, 0.12);
+}
+
+.news-card-image-wrap {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+}
+
+.news-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.news-card:hover .news-card-image {
+    transform: scale(1.06);
+}
+
+.news-card-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.news-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 0.85rem;
+}
+
+.news-category {
+    color: var(--primary-color, #D4AF37);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.news-date {
+    color: var(--secondary-color, #5C3A1F);
+    opacity: 0.8;
+}
+
+.news-card-title {
+    color: #2F1A0C;
+    font-weight: 700;
+    font-size: 1.15rem;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+.news-card-text {
+    color: #5C3A1F;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    flex-grow: 1;
+}
+
+/* News Modal Styling */
+.news-zoom-modal .modal-content {
+    background-color: #F8F4ED;
+    border: 1px solid rgba(92, 58, 31, 0.15);
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(47, 26, 12, 0.2);
+    overflow: hidden;
+}
+
+.news-zoom-modal .modal-header {
+    background-color: #5C3A1F;
+    color: #FFFFFF;
+    border-bottom: none;
+    padding: 18px 24px;
+}
+
+.news-zoom-modal .modal-header .btn-close {
+    filter: brightness(0) invert(1);
+    box-shadow: none;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+.news-zoom-modal .modal-header .btn-close:hover {
+    opacity: 1;
+}
+
+.news-zoom-modal .modal-body {
+    color: #5C3A1F;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.news-zoom-modal .modal-body p {
+    margin-bottom: 15px;
+}
+
+/* ==========================================
+   News Detail (Portal Berita) Styling
+   ========================================== */
+.breadcrumb-item a {
+    color: var(--secondary-color, #5C3A1F);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.breadcrumb-item a:hover {
+    color: var(--primary-color, #D4AF37);
+}
+
+.bg-kjs-gold {
+    background-color: var(--primary-color, #D4AF37) !important;
+}
+
+.news-detail-content p {
+    font-size: 1.1rem;
+    line-height: 1.75;
+    color: #2F1A0C;
+    margin-bottom: 1.5rem;
+}
+
+.news-detail-content ul {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.news-detail-content li {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #5C3A1F;
+    margin-bottom: 0.5rem;
+}
+
+.news-detail-content blockquote {
+    background-color: #F8F4ED;
+    border-left: 4px solid var(--primary-color, #D4AF37) !important;
+}
+
+.hover-kjs-gold {
+    transition: color 0.2s ease;
+}
+
+.hover-kjs-gold:hover {
+    color: var(--primary-color, #D4AF37) !important;
 }
 

@@ -268,4 +268,22 @@
         });
     }
 
+    // Smooth scroll to top when clicking logo on the homepage
+    $('.navbar-brand').on('click', function (e) {
+        var path = window.location.pathname;
+        if (path === '/' || path.endsWith('index.html') || path === '' || $('#section_1').length > 0 && !path.includes('news') && !path.includes('paket') && !path.includes('event')) {
+            var $hero = $('#section_1');
+            if ($hero.length) {
+                e.preventDefault();
+                $('html, body').animate({
+                    scrollTop: 0
+                }, 300);
+                // Close mobile menu if open
+                if ($('.navbar-collapse').hasClass('show')) {
+                    $('.navbar-collapse').collapse('hide');
+                }
+            }
+        }
+    });
+
 })(window.jQuery);
